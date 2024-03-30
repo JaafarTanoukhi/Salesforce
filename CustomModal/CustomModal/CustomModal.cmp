@@ -6,12 +6,12 @@
     <aura:attribute name="show" type="boolean" default="true"/>
    
     
-    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="{! 'slds-modal ' + (v.show ? 'slds-fade-in-open' : 'slds-fade-in-close') }">
+    <section class="{! 'slds-modal ' + (v.show ? 'slds-fade-in-open' : 'slds-fade-in-close') }">
         <div class="slds-modal__container">
             <div class="slds-modal__header">
-                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{!v.title}</h1>
+                <h1 class="slds-modal__title slds-hyphenate">{!v.title}</h1>
             </div>
-            <div class="slds-modal__content slds-p-around_medium slds-grid slds-wrap" style="height:fit-content">
+            <div class="slds-modal__content slds-p-around_medium slds-grid slds-wrap">
                 <aura:iteration items="{!v.bodyMeta}" var="item">
                     <c:ComponentWrapper componentMeta="{!item}" aura:id="component"/>
                 </aura:iteration>
@@ -23,5 +23,5 @@
             </div>
         </div>
     </section>
-    <div class="{! 'slds-backdrop ' + (v.show ? 'slds-backdrop_open' : 'slds-backdrop_close') }" role="presentation"></div>
+    <div class="{! 'slds-backdrop ' + (v.show ? 'slds-backdrop_open' : 'slds-backdrop_close') }"></div>
 </aura:component>
