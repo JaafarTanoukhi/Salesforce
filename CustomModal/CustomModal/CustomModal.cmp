@@ -1,0 +1,27 @@
+<aura:component>
+    <aura:attribute name="title" type="String" />
+    <aura:attribute name="bodyMeta" type="map[]"/>
+    <aura:attribute name="footerMeta" type="map[]"/>
+
+    <aura:attribute name="show" type="boolean" default="true"/>
+   
+    
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="{! 'slds-modal ' + (v.show ? 'slds-fade-in-open' : 'slds-fade-in-close') }">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{!v.title}</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium slds-grid slds-wrap" style="height:fit-content">
+                <aura:iteration items="{!v.bodyMeta}" var="item">
+                    <c:ComponentWrapper componentMeta="{!item}" aura:id="component"/>
+                </aura:iteration>
+            </div>
+            <div class="slds-modal__footer">
+                <aura:iteration items="{!v.footerMeta}" var="button" indexVar="i" >
+                <lightning:button label="{!button.label}" onclick="{!c.handleButtonClicked}" value="{!i}"></lightning:button>
+                </aura:iteration>
+            </div>
+        </div>
+    </section>
+    <div class="{! 'slds-backdrop ' + (v.show ? 'slds-backdrop_open' : 'slds-backdrop_close') }" role="presentation"></div>
+</aura:component>
