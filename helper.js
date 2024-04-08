@@ -1,6 +1,5 @@
 getModal : function (component){
     return {
-
         title,
         message,
         bodyComponents : [],
@@ -21,8 +20,8 @@ getModal : function (component){
 
         fire : function(){
             $A.createComponent('c:CustomModal',{
-                "title" : title,
-                "bodyMessage" : message,
+                "title" : this.title,
+                "bodyMessage" : this.message,
                 "bodyMeta"  : this.bodyComponents,
                 "footerMeta" : this.footerButtons
             },
